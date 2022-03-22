@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "76fb106b-a1a1-4df7-b0fe-41deee62667d",
+		"name": "Native SMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check for Opt-In",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer retrievedJWTtoken",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.prod.us.five9.net/opt-in/v1/domains/132477/smsoptinlist/entries/+16028321309",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prod",
+						"us",
+						"five9",
+						"net"
+					],
+					"path": [
+						"opt-in",
+						"v1",
+						"domains",
+						"132477",
+						"smsoptinlist",
+						"entries",
+						"+16028321309"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send SMS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer retrievedJWTtoken",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"campaignName\": \"SMS Outbound Campaign\",\r\n\t\"message\": \"Test text message\",\r\n\t\"recipients\": [{\r\n\t\t\"toPhoneNumber\": \"+16028321309\"\r\n\t}],\r\n\t\"dispositionName\": \"No Disposition\"\r\n}"
+				},
+				"url": {
+					"raw": "https://api.prod.us.five9.net/send-sms-svc/v1/domains/132477/send-sms-tasks",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prod",
+						"us",
+						"five9",
+						"net"
+					],
+					"path": [
+						"send-sms-svc",
+						"v1",
+						"domains",
+						"132477",
+						"send-sms-tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Base64encodedClientID:Secret",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.prod.us.five9.net/cloudauthsvcs/v1/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prod",
+						"us",
+						"five9",
+						"net"
+					],
+					"path": [
+						"cloudauthsvcs",
+						"v1",
+						"token"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opt-In",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer retrievedJWTtoken",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.prod.us.five9.net/opt-in/v1/domains/132477/smsoptinlist/entries/+16028321309",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prod",
+						"us",
+						"five9",
+						"net"
+					],
+					"path": [
+						"opt-in",
+						"v1",
+						"domains",
+						"132477",
+						"smsoptinlist",
+						"entries",
+						"+16028321309"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opt-Out",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer retrievedJWTtoken",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.prod.us.five9.net/opt-in/v1/domains/132477/smsoptinlist/entries/+16028321309",
+					"protocol": "https",
+					"host": [
+						"api",
+						"prod",
+						"us",
+						"five9",
+						"net"
+					],
+					"path": [
+						"opt-in",
+						"v1",
+						"domains",
+						"132477",
+						"smsoptinlist",
+						"entries",
+						"+16028321309"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
